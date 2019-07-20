@@ -34,7 +34,7 @@ dependencies {
 ```
 >> java代码中设置：
 ```
-banner.setImageLoader(new ImageLoader() {
+        banner.setImageLoader(new ImageLoader() {
             @Override
             public void conImageLoader(Context context, Object path, ImageView imageView) {
                 Glide.with(context).load(path).into(imageView);
