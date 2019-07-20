@@ -16,7 +16,6 @@ allprojects {
 ```
 dependencies {
     ...
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     implementation 'com.github.renoside:Banner:v2.1.1'
     ...
 }
