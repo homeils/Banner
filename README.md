@@ -24,22 +24,22 @@ dependencies {
 >> 布局文件示例：
 ```
 <com.renoside.banner.Banner
-        android:id="@+id/test_banner"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintDimensionRatio="3 : 2"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    android:id="@+id/test_banner"
+    android:layout_width="0dp"
+    android:layout_height="0dp"
+    app:layout_constraintDimensionRatio="3 : 2"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintTop_toTopOf="parent" />
 ```
 >> java代码中设置：
 ```
 banner.setImageLoader(new ImageLoader() {
-            @Override
-            public void conImageLoader(Context context, Object path, ImageView imageView) {
-                Glide.with(context).load(path).into(imageView);
-            }
-        }); //设置图片加载器，例举Glide，可自行选择
+    @Override
+    public void conImageLoader(Context context, Object path, ImageView imageView) {
+        Glide.with(context).load(path).into(imageView);
+    }
+}); //设置图片加载器，例举Glide，可自行选择
 banner.setPointSize(20);  //设置indicator圆点大小，单位dp
 banner.setRelay(2000);  //设置轮播间隔时长，单位毫秒
 banner.setTitleColor(0xFFFFFFFF); //设置标题字体颜色，0x八位十六进制（前两位透明度，后六位颜色）
@@ -47,11 +47,11 @@ banner.setImages(images); //设置图片集合
 banner.setTitles(titles); //设置标题集合，注意是List<String>
 banner.start(); //启动轮播
 banner.setOnBannerListener(new OnBannerListener() {
-            @Override
-            public void onClick(int position) {
-                Toast.makeText(MainActivity.this, String.valueOf(position), Toast.LENGTH_SHORT).show();
-            }
-        }); //设置监听
+    @Override
+    public void onClick(int position) {
+        Toast.makeText(MainActivity.this, String.valueOf(position), Toast.LENGTH_SHORT).show();
+    }
+}); //设置监听
 ```
 ## 说明
 >> 项目有许多不足之处，还望多多包涵           
