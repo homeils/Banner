@@ -159,6 +159,8 @@ public class Banner extends ConstraintLayout {
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(pointSize, pointSize);
             if (i == 0 && !isRestart) {
                 point.setEnabled(true);
+            } else if (startPosition == 0) {
+                point.setEnabled(true);
             } else {
                 point.setEnabled(false);
                 params.leftMargin = 8;
