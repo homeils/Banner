@@ -288,7 +288,8 @@ public class Banner extends ConstraintLayout {
          */
         @Override
         public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
-            container.removeView((View) object);
+            container.removeView(imageViews.get(position % imageViews.size()));
+            points.removeView(points.getChildAt(position % imageViews.size()));
         }
 
     }
