@@ -18,6 +18,7 @@ import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 public class Banner extends ConstraintLayout {
@@ -138,6 +139,8 @@ public class Banner extends ConstraintLayout {
      * @param imageList
      */
     public void setImages(List<?> imageList) {
+        imageViews.clear();
+        points.removeAllViews();
         for (int i = 0; i < imageList.size(); i++) {
             ImageView imageView = new ImageView(getContext());
             imageView.setScaleType(ImageView.ScaleType.FIT_XY);
@@ -172,6 +175,7 @@ public class Banner extends ConstraintLayout {
      * @param titleList
      */
     public void setTitles(List<String> titleList) {
+        titles.clear();
         for (int i = 0; i < titleList.size(); i++) {
             String tmp = titleList.get(i);
             titles.add(tmp);
@@ -288,8 +292,7 @@ public class Banner extends ConstraintLayout {
          */
         @Override
         public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
-            container.removeView(imageViews.get(position % imageViews.size()));
-            points.removeView(points.getChildAt(position % imageViews.size()));
+            container.removeView((ImageView) object);
         }
 
     }
