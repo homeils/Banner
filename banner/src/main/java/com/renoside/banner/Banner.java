@@ -55,6 +55,14 @@ public class Banner extends ConstraintLayout {
      */
     private int prePosition = 0;
     /**
+     * 是否重置了轮播
+     */
+    private boolean isRestart = false;
+    /**
+     * 重置前位置
+     */
+    private int startPosition = 0;
+    /**
      * 轮播间隔
      */
     private int relay = 4000;
@@ -104,16 +112,6 @@ public class Banner extends ConstraintLayout {
         background = findViewById(R.id.background);
         imageViews = new ArrayList<>();
         titles = new ArrayList<>();
-        viewPager.setAdapter(new ViewPagerBanner());
-        int position = 1000 / 2 - 1000 / 2 % imageViews.size();
-        viewPager.setCurrentItem(position);
-        viewPager.addOnPageChangeListener(new PageChangeListener());
-        if (titles != null && titles.size() != 0) {
-            title.setTextColor(titleColor);
-            title.setText(titles.get(prePosition));
-        } else {
-            background.setVisibility(View.GONE);
-        }
     }
 
     /**
@@ -196,7 +194,29 @@ public class Banner extends ConstraintLayout {
      * ViewPager设置适配器及监听
      */
     public void start() {
-        handler.sendEmptyMessageDelayed(0, relay);
+        viewPager.setAdapter(new ViewPagerBanner());
+        if (!isRestart) {
+            int position = 1000 / 2 - 1000 / 2 % imageViews.size();
+            viewPager.setCurrentItem(position);
+            handler.sendEmptyMessageDelayed(0, relay);
+            isRestart = true;
+        } else {
+            if (prePosition == (imageViews.size() - 1)) {
+                startPosition = 0;
+            } else {
+                startPosition = prePosition + 1;
+            }
+            viewPager.setCurrentItem(startPosition);
+            handler.removeCallbacksAndMessages(null);
+            handler.sendEmptyMessageDelayed(0, relay);
+        }
+        viewPager.addOnPageChangeListener(new PageChangeListener());
+        if (titles != null && titles.size() != 0) {
+            title.setTextColor(titleColor);
+            title.setText(titles.get(prePosition));
+        } else {
+            background.setVisibility(View.GONE);
+        }
     }
 
     /**
