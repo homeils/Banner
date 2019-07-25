@@ -104,6 +104,16 @@ public class Banner extends ConstraintLayout {
         background = findViewById(R.id.background);
         imageViews = new ArrayList<>();
         titles = new ArrayList<>();
+        viewPager.setAdapter(new ViewPagerBanner());
+        int position = 1000 / 2 - 1000 / 2 % imageViews.size();
+        viewPager.setCurrentItem(position);
+        viewPager.addOnPageChangeListener(new PageChangeListener());
+        if (titles != null && titles.size() != 0) {
+            title.setTextColor(titleColor);
+            title.setText(titles.get(prePosition));
+        } else {
+            background.setVisibility(View.GONE);
+        }
     }
 
     /**
@@ -186,16 +196,6 @@ public class Banner extends ConstraintLayout {
      * ViewPager设置适配器及监听
      */
     public void start() {
-        viewPager.setAdapter(new ViewPagerBanner());
-        int position = 1000 / 2 - 1000 / 2 % imageViews.size();
-        viewPager.setCurrentItem(position);
-        viewPager.addOnPageChangeListener(new PageChangeListener());
-        if (titles != null && titles.size() != 0) {
-            title.setTextColor(titleColor);
-            title.setText(titles.get(prePosition));
-        } else {
-            background.setVisibility(View.GONE);
-        }
         handler.sendEmptyMessageDelayed(0, relay);
     }
 
