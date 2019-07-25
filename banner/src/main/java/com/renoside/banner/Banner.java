@@ -59,10 +59,6 @@ public class Banner extends ConstraintLayout {
      */
     private boolean isRestart = false;
     /**
-     * 重置前位置
-     */
-    private int startPosition = 0;
-    /**
      * 轮播间隔
      */
     private int relay = 4000;
@@ -159,7 +155,7 @@ public class Banner extends ConstraintLayout {
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(pointSize, pointSize);
             if (i == 0 && !isRestart) {
                 point.setEnabled(true);
-            } else if (i == 0 && startPosition == 0 && isRestart) {
+            } else if (i == 0 && prePosition == 0 && isRestart) {
                 point.setEnabled(true);
             } else {
                 point.setEnabled(false);
@@ -203,12 +199,7 @@ public class Banner extends ConstraintLayout {
             handler.sendEmptyMessageDelayed(0, relay);
             isRestart = true;
         } else {
-            if (prePosition == (imageViews.size() - 1)) {
-                startPosition = 0;
-            } else {
-                startPosition = prePosition;
-            }
-            viewPager.setCurrentItem(startPosition);
+            viewPager.setCurrentItem(prePosition);
             handler.removeCallbacksAndMessages(null);
             handler.sendEmptyMessageDelayed(0, relay);
         }
