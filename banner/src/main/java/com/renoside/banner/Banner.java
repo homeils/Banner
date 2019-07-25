@@ -157,7 +157,7 @@ public class Banner extends ConstraintLayout {
             ImageView point = new ImageView(getContext());
             point.setBackgroundResource(R.drawable.point_selector);
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(pointSize, pointSize);
-            if (i == 0) {
+            if (i == 0 && !isRestart) {
                 point.setEnabled(true);
             } else {
                 point.setEnabled(false);
