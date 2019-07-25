@@ -206,7 +206,7 @@ public class Banner extends ConstraintLayout {
             if (prePosition == (imageViews.size() - 1)) {
                 startPosition = 0;
             } else {
-                startPosition = prePosition + 1;
+                startPosition = prePosition;
             }
             viewPager.setCurrentItem(startPosition);
             handler.removeCallbacksAndMessages(null);
