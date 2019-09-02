@@ -16,7 +16,7 @@ allprojects {
 ```
 dependencies {
     ...
-    implementation 'com.github.renoside:Banner:v2.1.11'
+    implementation 'com.github.renoside:Banner:v2.1.12'
     ...
 }
 ```
