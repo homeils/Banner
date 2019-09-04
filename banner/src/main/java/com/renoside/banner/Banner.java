@@ -277,6 +277,10 @@ public class Banner extends ConstraintLayout {
                         onBannerListener.onClick(position % imageViews.size());
                     }
                 });
+                ViewGroup parent = (ViewGroup) imageView.getParent();
+                if (parent != null) {
+                    parent.removeAllViews();
+                }
                 container.addView(imageView);
                 return imageView;
             } else {
